@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "GraphEquationManager.h"
+#include "graphobject.h"
+#include "line.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -20,8 +23,8 @@ public:
 
 private:
     Ui::MainWindow *ui;
-
-    QVector<double> vec_x, vec_y;
+    GraphEquationManager equationManager;
+   QVector<double> vec_x, vec_y;
 
 private slots:
     void on_add_clicked();
@@ -32,6 +35,7 @@ private slots:
     void on_clear_cal_released();
     void on_equal_released();
     void binary_operation_pressed();
+    void on_GraphButton_clicked();
 
 };
 #endif // MAINWINDOW_H

@@ -1,10 +1,15 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "line.h"
 
 #include <QPainter>
 #include <QColorDialog>
 #include <iostream>
 #include <math.h>
+
+
+
+
 
 double firstNum;
 bool typingSecondNumber = false;
@@ -23,15 +28,23 @@ MainWindow::MainWindow(QWidget *parent)
     ui->plot->graph(0)->setLineStyle(QCPGraph::lsNone);
     connect(ui->plot, SIGNAL(mouseDoubleClick(QMouseEvent*)), SLOT(clickedGraph(QMouseEvent*)));
 
+    //Equation Manager
+    this->equationManager = GraphEquationManager();
+    Line firstLine;
+    firstLine.calculateFromEquation();
+    this->equationManager.addObject(firstLine);
+
+
     ui->plot->addGraph();
     ui->plot->graph(0)->setPen(QPen(Qt::blue)); // line color blue
     // generate some points of data (y0 line):
-    QVector<double> x(51), y0(51);
-    for (int i=0; i<51; ++i)
-    {
-      x[i] = i;
-      y0[i] = qExp(-i/15.0)*qCos(i/10.0); // function
-    }
+//    QVector<double> x(51), y0(51);
+//    for (int i=0; i<points_p->size(); ++i)
+//    {
+//      x[i] = i;
+//      //y0[i] = qExp(-i/15.0)*qCos(i/10.0); // function
+//      y0[i] = points_p->at(i);
+//    }
 
     // configure right and top axis to show ticks but no labels:
     // (see QCPAxisRect::setupFullAxesBox for a quicker method to do this)
@@ -41,7 +54,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->plot->xAxis, SIGNAL(rangeChanged(QCPRange)), ui->plot->xAxis2, SLOT(setRange(QCPRange));
     connect(ui->plot->yAxis, SIGNAL(rangeChanged(QCPRange)), ui->plot->yAxis2, SLOT(setRange(QCPRange)));
     // pass data points to graphs:
-    ui->plot->graph(0)->setData(x, y0);
+
+    ui->plot->graph(0)->setData(firstLine.xPoints,firstLine.yPoints);
     // let the ranges scale themselves so graph 0 fits perfectly in the visible area:
     ui->plot->graph(0)->rescaleAxes();
 
@@ -245,4 +259,21 @@ void MainWindow::binary_operation_pressed()
     QPushButton * button = (QPushButton*) sender();
     firstNum = ui->label_cal->text().toDouble();
     button->setCheckable(true);
+}
+
+void MainWindow::on_GraphButton_clicked()
+{
+
+    double intercept = ui->interceptInput->text().toDouble();
+    double slope = ui->slopeInput->text().toDouble();
+    qInfo() << "slope" << slope;
+    qInfo() << " intercept" << intercept;
+    Line line(slope,intercept);
+    line.calculateFromEquation();
+    qInfo() << line.xPoints.size();
+    qInfo() << line.yPoints.size();
+    ui->plot->graph(0)->setData(line.xPoints,line.yPoints);
+    ui->plot->replot();
+    ui->plot->update();
+
 }
