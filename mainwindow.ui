@@ -17,8 +17,8 @@
    <widget class="QLabel" name="label_x">
     <property name="geometry">
      <rect>
-      <x>640</x>
-      <y>400</y>
+      <x>630</x>
+      <y>430</y>
       <width>21</width>
       <height>16</height>
      </rect>
@@ -40,8 +40,8 @@
    <widget class="QPushButton" name="add">
     <property name="geometry">
      <rect>
-      <x>800</x>
-      <y>380</y>
+      <x>790</x>
+      <y>410</y>
       <width>100</width>
       <height>32</height>
      </rect>
@@ -63,8 +63,8 @@ QPushButton:pressed {
    <widget class="QDoubleSpinBox" name="x_coord">
     <property name="geometry">
      <rect>
-      <x>660</x>
-      <y>390</y>
+      <x>650</x>
+      <y>420</y>
       <width>91</width>
       <height>31</height>
      </rect>
@@ -73,8 +73,8 @@ QPushButton:pressed {
    <widget class="QDoubleSpinBox" name="y_coord">
     <property name="geometry">
      <rect>
-      <x>660</x>
-      <y>450</y>
+      <x>650</x>
+      <y>480</y>
       <width>91</width>
       <height>31</height>
      </rect>
@@ -624,8 +624,8 @@ QPushButton:pressed {
    <widget class="QPushButton" name="clear">
     <property name="geometry">
      <rect>
-      <x>800</x>
-      <y>460</y>
+      <x>790</x>
+      <y>490</y>
       <width>100</width>
       <height>32</height>
      </rect>
@@ -647,14 +647,109 @@ QPushButton:pressed {
    <widget class="QLabel" name="label_y">
     <property name="geometry">
      <rect>
-      <x>640</x>
-      <y>460</y>
+      <x>630</x>
+      <y>490</y>
       <width>21</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
      <string>Y:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lineLabel">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>310</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Graph Equation</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="slopeInput">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>340</y>
+      <width>41</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="GraphButton">
+    <property name="geometry">
+     <rect>
+      <x>800</x>
+      <y>330</y>
+      <width>100</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+  background-color: rgb(46, 71, 53);
+  border: 1px solid gray;
+}
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #BEBEBE, stop: 1 #D7D7D7);
+}</string>
+    </property>
+    <property name="text">
+     <string>Graph</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="interceptInput">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>340</y>
+      <width>41</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lineLabel_2">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>310</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Graph Equation</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lineLabel_3">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>340</y>
+      <width>31</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Slope</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lineLabel_4">
+    <property name="geometry">
+     <rect>
+      <x>680</x>
+      <y>340</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>y-intercept</string>
     </property>
    </widget>
   </widget>
@@ -664,7 +759,7 @@ QPushButton:pressed {
      <x>0</x>
      <y>0</y>
      <width>948</width>
-     <height>24</height>
+     <height>17</height>
     </rect>
    </property>
   </widget>
